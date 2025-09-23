@@ -1,3 +1,10 @@
+<?php
+include "connection.php";
+$gitTotalT= "SELECT * FROM instractor";
+$totalTeacher = $connect->query($gitTotalT);
+$gitTotalS = "SELECT * FROM student";
+$totalStudent = $connect->query($gitTotalS);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -212,6 +219,31 @@
             <div class="w-full p-7 flex items-center bg-stone-50 shadow-sm shadow-stone-400">
                 <input type="text" class=" w-[50%] rounded-full px-3 outline-0" placeholder="Find Something...">
             </div>
+            <!-- navbar endded -->
+             <!-- content start -->
+              <div class="w-full text-2xl p-12  font-medium">
+                <h1>Admin Dashbord</h1>
+                <h1 class=" text-base">Dashbord >Home </h1>
+                <div class="flex justify-center items-center space-x-4 my-6">
+                    <div class="flex gap-2 shadow-xl h-32 flex-col flex-1 justify-center items-center bg-stone-100">
+                        <h1 class=" font-medium text-xl">Teacher</h1>
+                        <h1>
+                            <?php
+                            echo $totalTeacher->num_rows;
+                            ?>
+                        </h1>
+                    </div>
+                    <div class="flex gap-2 shadow-xl h-32 flex-col justify-center items-center flex-1 bg-stone-100">
+                        <h1 class=" font-medium text-xl">Student</h1>
+                        <h1>
+                            <?php
+                            echo $totalStudent->num_rows;
+                            ?>
+                        </h1>
+                    </div>
+                </div>
+              </div>
+              <!-- content endded -->
         </div>
     </div>
 </body>
