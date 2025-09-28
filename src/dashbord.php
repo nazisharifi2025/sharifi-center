@@ -2,8 +2,12 @@
 include "connection.php";
 $gitTotalT= "SELECT * FROM instractor";
 $totalTeacher = $connect->query($gitTotalT);
-$gitTotalS = "SELECT * FROM student";
+$gitTotalS = "SELECT count(st_id) AS student FROM student";
 $totalStudent = $connect->query($gitTotalS);
+$studentAll = $totalStudent->fetch_assoc();
+$commentFees = "SELECT sum(fec_paid) AS Fess FROM student";
+$result = $connect->qurey($commentFees);
+$totalFece = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,230 +21,59 @@ $totalStudent = $connect->query($gitTotalS);
     <script src="app.js" defer></script>
 </head>
 <body>
-    <div class="h-screen overflow-y-scroll w-full bg-stone-50 flex">
-        <div id="contener" class="w-[25%] bg-gray-900 text-white overflow-y-scroll hidden-scroll ">
-            <div class="px-5 py-4 bg-amber-600 flex justify-between items-center">
-                <img src="../images/logo.png"  alt="">
-                <button id="bars" class="block">
-                <i class="fas fa-bars text-white text-3xl"></i>
-                </button>
-                <button id="times" class="hidden">
-                <i class="fas fa-times text-white text-3xl"></i>
-                </button>
-            </div>
-            <!-- logo ended -->
-             <div id="dir" class="h-full w-full">
-             <div id="click" class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
-                <div class="flex items-center space-x-6 ">
-                    <i class="fa fa-tachometer-alt text-xl text-amber-600"></i>
-                    <span class="text-gray-300 text-xl">Dashbord</span>
-                </div>
-                <i class="fas fa-chevron-right text-xl"></i>
-                <button class="hidden icone">
-                    <i class="fa fa-tachometer-alt text-xl text-amber-600"></i>
-                </button>
-             </div>
-             <div id="div" class=" transform-fill transition-all duration-700 ease-linear hidden flex-col text-gray-400 items-center my-2 w-full ">
-                <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Admin</span>
-                </div>
-                <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Students</span>
-                </div>
-                <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Teacher</span>
-                </div>
-             </div>
-             <!-- div1 endedd -->
-                <div id="click2" class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
-                <div class="flex items-center space-x-6 ">
-                    <i class="fa fa-user-graduate text-xl text-amber-600"></i>
-                    <span class="text-gray-300 text-xl">Students</span>
-                </div>
-                <i class="fas fa-chevron-right text-xl"></i>
-                <button class="hidden icone">
-                    <i class="fa fa-user-graduate text-xl text-amber-600"></i>
-                </button>
-             </div>
-             <div id="div2" class=" transform-fill transition-all duration-700 ease-linear hidden flex-col text-gray-400 items-center my-2 w-full ">
-                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>All Student</span>
-                </div>
-                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Students Details</span>
-                </div>
-                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Admission From</span>
-                </div>
-                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Student Promotion</span>
-                </div>
-             </div>
-             <!-- div2 ended -->
-                     <div id="click3" class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
-                <div class="flex items-center space-x-6 ">
-                    <i class="fa fa-chalkboard-teacher text-xl text-amber-600"></i>
-                    <span class="text-gray-300 text-xl">Teacher</span>
-                </div>
-                <i class="fas fa-chevron-right text-xl"></i>
-                  <button class="hidden icone">
-                    <i class="fa fa-chalkboard-teacher text-xl text-amber-600"></i>
-                </button>
-             </div>
-             <div id="div3" class=" transform-fill transition-all duration-700 ease-linear hidden flex-col text-gray-400 items-center my-2 w-full ">
-                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>All Teacher</span>
-                </div>
-                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Teacher Details</span>
-                </div>
-                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Add Teacher</span>
-                </div>
-                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Payment</span>
-                </div>
-             </div>
-             <!-- div 3 enddedd -->
-                       <div id="click4" class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
-                <div class="flex items-center space-x-6 ">
-                    <i class="fa fa-wallet text-xl text-amber-600"></i>
-                    <span class="text-gray-300 text-xl">Acount</span>
-                </div>
-                <i class="fas fa-chevron-right text-xl"></i>
-                 <button class="hidden icone">
-                    <i class="fa fa-wallet text-xl text-amber-600"></i>
-                </button>
-             </div>
-             <div id="div4" class=" transform-fill transition-all duration-700 ease-linear hidden flex-col text-gray-400 items-center my-2 w-full ">
-                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>All Fees Collection</span>
-                </div>
-                <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Expenses</span>
-                </div>
-                <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Add Expenses</span>
-                </div>
-             </div>
-             <!-- div 4 ended -->
-                        <div id="click5" class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
-                <div class="flex items-center space-x-6 ">
-                    <i class=" fa fa-school text-xl text-amber-600"></i>
-                    <span class="text-gray-300 text-xl">Class</span>
-                </div>
-                <i class="fas fa-chevron-right text-xl"></i>
-                 <button class="hidden icone">
-                    <i class="fa fa-school text-xl text-amber-600"></i>
-                </button>
-             </div>
-             <div id="div5" class=" transform-fill transition-all duration-700 ease-linear hidden flex-col text-gray-400 items-center my-2 w-full ">
-                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>All Class</span>
-                </div>
-                <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Add New Class</span>
-                </div>
-             </div>
-             <!-- div endded -->
-                         <div id="click6" class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
-                <div class="flex items-center space-x-6 ">
-                    <i class=" fa fa-user-friends text-xl text-amber-600"></i>
-                    <span class="text-gray-300 text-xl">Parents</span>
-                </div>
-                <i class="fas fa-chevron-right text-xl"></i>
-                  <button class="hidden icone">
-                    <i class="fa fa-user-friends text-xl text-amber-600"></i>
-                </button>
-             </div>
-             <div id="div6" class=" transform-fill transition-all duration-700 ease-linear hidden flex-col text-gray-400 items-center my-2 w-full ">
-                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>All Parent</span>
-                </div>
-                <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Parent Details</span>
-                </div>
-                <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Add Parent</span>
-                </div>
-             </div>
-             <!-- div 5 endded -->
-                          <div class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
-                <div class="flex items-center space-x-6 ">
-                    <i class=" fa fa-book-open text-xl text-amber-600"></i>
-                    <span class="text-gray-300 text-xl">Subject</span>
-                </div>
-                 <button class="hidden icone">
-                    <i class="fa fa-book-open text-xl text-amber-600"></i>
-                </button>
-             </div>
-             <!-- div 6 endded -->
-                          <div class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
-                <div class="flex items-center space-x-6 ">
-                    <i class=" fa fa-calendar-alt text-xl text-amber-600"></i>
-                    <span class="text-gray-300 text-xl">Class Routine</span>
-                </div>
-                  <button class="hidden icone">
-                    <i class="fa fa-calendar-alt text-xl text-amber-600"></i>
-                </button>
-             </div>
-             <!-- div 7 endedd -->
-                           <div class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
-                <div class="flex items-center space-x-6 ">
-                    <i class="fas fa-clipboard-list text-xl text-amber-600"></i>
-                    <span class="text-gray-300 text-xl">Attendence</span>
-                </div>
-                <button class="hidden icone">
-                    <i class="fas fa-clipboard-list text-xl text-amber-600"></i>
-                </button>
-             </div>
-        </div>
-        </div>
-        <div class="h-[200vh] w-full ">
-            <div class="w-full p-7 flex items-center bg-stone-50 shadow-sm shadow-stone-400">
-                <input type="text" class=" w-[50%] rounded-full px-3 outline-0" placeholder="Find Something...">
-            </div>
+    <div class="h-screen overflow-y-hidden w-full bg-stone-50 flex">
+        <?php
+        include "SideBAr.php";
+        ?>
+        <!-- sideBar endded -->
+        <div class="h-screen w-full ">
+           <?php
+           include "navbar.php";
+           ?>
             <!-- navbar endded -->
              <!-- content start -->
               <div class="w-full text-2xl p-12  font-medium">
                 <h1>Admin Dashbord</h1>
-                <h1 class=" text-base">Dashbord >Home </h1>
-                <div class="flex justify-center items-center space-x-4 my-6">
-                    <div class="flex gap-2 shadow-xl h-32 flex-col flex-1 justify-center items-center bg-stone-100">
-                        <h1 class=" font-medium text-xl">Teacher</h1>
-                        <h1>
+                <h1 class=" text-base">Dashbord <i class="fas fa-chevron-right text-sm"></i>Home </h1>
+                <div class="flex w-[80%] mx-auto justify-center items-center space-x-4 my-6 flex-wrap">
+                    <div class="flex gap-2 shadow-xl h-40 flex-col flex-1 justify-center items-center bg-stone-100">
+                    <i class="fa fa-chalkboard-teacher text-2xl p-3 rounded-full text-fuchsia-800 bg-fuchsia-300/30"></i>    
+                    <h1 class=" font-medium text-xl text-gray-500">Total Teacher</h1>
+                        <h1 class="text-3xl">
                             <?php
                             echo $totalTeacher->num_rows;
                             ?>
                         </h1>
                     </div>
-                    <div class="flex gap-2 shadow-xl h-32 flex-col justify-center items-center flex-1 bg-stone-100">
-                        <h1 class=" font-medium text-xl">Student</h1>
-                        <h1>
+                    <div class="flex gap-2 shadow-xl h-40 flex-col justify-center items-center flex-1 bg-stone-100">
+                        <i class="fa fa-user-graduate text-2xl py-3 px-4 rounded-full text-blue-800 bg-blue-300/30"></i>
+                        <h1 class=" font-medium text-xl text-gray-500">Total Student</h1>
+                        <h1 class="text-3xl">
                             <?php
-                            echo $totalStudent->num_rows;
+                            echo $studentAll["student"];
                             ?>
                         </h1>
                     </div>
+                    <!-- div 2 endded -->
+                </div>
+                <div class="flex w-[80%] mx-auto justify-center items-center space-x-4 my-12 flex-wrap">
+                    <div class="flex gap-2 shadow-xl h-40 flex-col flex-1 justify-center items-center bg-stone-100">
+                    <i class="fa fa-wallet bg-amber-800/40 text-amber-800 text-2xl p-3 rounded-full"></i>  
+                    <h1 class=" font-medium text-xl text-gray-500">Total Amount</h1>
+                        <h1 class="text-3xl">
+                         <?php
+                         echo $totalFece["fess"];
+                         ?>
+                        </h1>
+                    </div>
+                    <div class="flex gap-2 shadow-xl h-40 flex-col justify-center items-center flex-1 bg-stone-100">
+                        <i class="fa fa-book-open text-2xl py-3 px-3 rounded-full text-yellow-400 bg-yellow-300/30"></i>
+                        <h1 class=" font-medium text-xl text-gray-500">All Subject</h1>
+                        <h1 class="text-3xl">
+                           0
+                        </h1>
+                    </div>
+                    <!-- div 2 endded -->
                 </div>
               </div>
               <!-- content endded -->
