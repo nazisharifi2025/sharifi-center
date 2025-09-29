@@ -6,7 +6,7 @@ $gitTotalS = "SELECT count(st_id) AS student FROM student";
 $totalStudent = $connect->query($gitTotalS);
 $studentAll = $totalStudent->fetch_assoc();
 $commentFees = "SELECT sum(fec_paid) AS Fess FROM student";
-$result = $connect->qurey($commentFees);
+$result = $connect->query($commentFees);
 $totalFece = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
@@ -62,7 +62,7 @@ $totalFece = $result->fetch_assoc();
                     <h1 class=" font-medium text-xl text-gray-500">Total Amount</h1>
                         <h1 class="text-3xl">
                          <?php
-                         echo $totalFece["fess"];
+                         echo $totalFece["Fess"];
                          ?>
                         </h1>
                     </div>
