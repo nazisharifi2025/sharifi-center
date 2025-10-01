@@ -1,13 +1,19 @@
 <?php
 include "connection.php";
-$gitTotalT= "SELECT * FROM instractor";
-$totalTeacher = $connect->query($gitTotalT);
-$gitTotalS = "SELECT count(st_id) AS student FROM student";
-$totalStudent = $connect->query($gitTotalS);
-$studentAll = $totalStudent->fetch_assoc();
-$commentFees = "SELECT sum(fec_paid) AS Fess FROM student";
-$result = $connect->query($commentFees);
-$totalFece = $result->fetch_assoc();
+if(isset($_POST["insDegree"])){
+    $name = $_POST["insName"];
+    $lastName = $_POST["insLastName"];
+    $phoneNumber = $_POST["insphoneNum"];
+    $Degree = $_POST["insDegree"];
+    $result = $connect->query("SELECT ins_name , ins_lastname FROM instractor WHERE ins_name='$name' AND ins_lastname = '$lastName'");
+    if($result->num_rows ===0){
+       $Instructor= ("INSERT INTO instractor(ins_name,ins_lastname,phone_num,degree) VALUES ('$name','$lastName','$phoneNumber','$Degree')");
+       $result = $connect->query($Instructor);
+    }
+    else{
+        echo "<script>alert('Sorry The Teacher alredy regestar.')</script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,17 +38,17 @@ $totalFece = $result->fetch_assoc();
            ?>
             <!-- navbar endded -->
              <!-- content start -->
-              <div class="w-full text-2xl p-12  font-medium">
-                <h1>Admin Dashbord</h1>
-                <h1 class=" text-base">Dashbord <i class="fas fa-chevron-right text-sm"></i>Home </h1>
+              <div class="w-full  p-12  font-medium">
+                <h1 class="text-2xl">Admin Dashbord</h1>
+                <h1 class=" text-base">Dashbord <i class="fas fa-chevron-right text-sm"></i>Instractor </h1>
                 <div class="w-full mx-auto flex flex-col gap-4 items-center justify-center ">
                 <h1 class="text-4xl mb-5 font-medium">Add Instractor</h1>
                 <form action=<?php echo $_SERVER["PHP_SELF"]; ?> method="post" class="w-[80%] grid grid-cols-2 px-3 py-12 border rounded-md gap-6 ">
-                    <input name="depName" type="text" placeholder="Plase Inter A Valid Departmint" class="p-3 border border-gray-500 rounded-md outline-0">
-                    <input name="depName" type="text" placeholder="Plase Inter A Valid Departmint" class="p-3 border border-gray-500 rounded-md outline-0">
-                    <input name="depName" type="text" placeholder="Plase Inter A Valid Departmint" class="p-3 border border-gray-500 rounded-md outline-0">
-                    <input name="depName" type="text" placeholder="Plase Inter A Valid Departmint" class="p-3 border border-gray-500 rounded-md outline-0">
-                    <input type="submit" value="Save" class=" py-2 px-6 rounded-md bg-amber-600">
+                    <input name="insName" type="text" placeholder="Plase Inter A Valid Instractor Name" class="p-3 border border-gray-500 rounded-md outline-0">
+                    <input name="insLastName" type="text" placeholder="Plase Inter A Valid Instractor LastName " class="p-3 h-14 border border-gray-500 rounded-md outline-0">
+                    <input name="insphoneNum" type="text" placeholder="Plase Inter A Valid Instractor Phone Number" class="p-3 border border-gray-500 rounded-md outline-0">
+                    <input name="insDegree" type="text" placeholder="Plase Inter A Valid Instractor Degree" class="p-3 border border-gray-500 rounded-md outline-0">
+                    <input type="submit" value="Save" class=" py-2 px-12 w-fit  rounded-md bg-amber-600">
                 </form>
             </div>
               </div>

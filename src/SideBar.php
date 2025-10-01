@@ -10,7 +10,7 @@
     <script src="app.js" defer></script>
 </head>
 <body>
-      <div id="contener" class="w-[25%] bg-gray-900 text-white overflow-y-scroll hidden-scroll ">
+      <div id="contener" class="w-[25%] bg-gray-900 h-full text-white ">
             <div class="px-5 py-4 bg-amber-600 flex justify-between items-center">
                 <img src="../images/logo.png"  alt="">
                 <button id="bars" class="block">
@@ -35,22 +35,22 @@
              <div id="div" class=" transform-fill transition-all duration-700 ease-linear hidden flex-col text-gray-400 items-center my-2 w-full ">
                 <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Admin</span>
+                    <span><a href="dashbord.php"> Admin</a></span>
+                </div>
+                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
+                    <i class="fas fa-chevron-right text-sm"></i>
+                    <span>Student</span>
                 </div>
                 <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Students</span>
-                </div>
-                <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Teacher</span>
+                    <span><a href=""></a> Teacher</span>
                 </div>
              </div>
              <!-- div1 endedd -->
                 <div id="click2" class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
                 <div class="flex items-center space-x-6 ">
                     <i class="fa fa-user-graduate text-xl text-amber-600"></i>
-                    <span class="text-gray-300 text-xl">Students</span>
+                    <span class="text-gray-300 text-xl"><a href="AllStudent.php">Students</a> </span>
                 </div>
                 <i class="fas fa-chevron-right text-xl"></i>
                 <button class="hidden icone">
@@ -60,7 +60,7 @@
              <div id="div2" class=" transform-fill transition-all duration-700 ease-linear hidden flex-col text-gray-400 items-center my-2 w-full ">
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
-                    <span>All Student</span>
+                    <span><a href="AllStudent.php">All Student</a></span>
                 </div>
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
@@ -68,7 +68,7 @@
                 </div>
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Admission From</span>
+                    <span><a href="insertStudent.php">Student Form</a></span>
                 </div>
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
@@ -97,11 +97,32 @@
                 </div>
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Add Teacher</span>
+                    <span><a href="insertInstractor.php">Add Teacher</a></span>
                 </div>
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
                     <span>Payment</span>
+                </div>
+             </div>
+             <!--  -->
+                           <div id="click5" class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
+                <div class="flex items-center space-x-6 ">
+                    <i class=" fa fa-school text-xl text-amber-600"></i>
+                    <span class="text-gray-300 text-xl">Course</span>
+                </div>
+                <i class="fas fa-chevron-right text-xl"></i>
+                 <button class="hidden icone">
+                    <i class="fa fa-school text-xl text-amber-600"></i>
+                </button>
+             </div>
+             <div id="div5" class=" transform-fill transition-all duration-700 ease-linear hidden flex-col text-gray-400 items-center my-2 w-full ">
+                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
+                    <i class="fas fa-chevron-right text-sm"></i>
+                    <span><a href="AllCourse.php">All Course</a></span>
+                </div>
+                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
+                    <i class="fas fa-chevron-right text-sm"></i>
+                    <span><a href="insertCourse.php">Add course</a></span>
                 </div>
              </div>
              <!-- div 3 enddedd -->
@@ -130,26 +151,7 @@
                 </div>
              </div>
              <!-- div 4 ended -->
-                        <div id="click5" class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
-                <div class="flex items-center space-x-6 ">
-                    <i class=" fa fa-school text-xl text-amber-600"></i>
-                    <span class="text-gray-300 text-xl">Class</span>
-                </div>
-                <i class="fas fa-chevron-right text-xl"></i>
-                 <button class="hidden icone">
-                    <i class="fa fa-school text-xl text-amber-600"></i>
-                </button>
-             </div>
-             <div id="div5" class=" transform-fill transition-all duration-700 ease-linear hidden flex-col text-gray-400 items-center my-2 w-full ">
-                <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>All Class</span>
-                </div>
-                <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Add New Class</span>
-                </div>
-             </div>
+          
              <!-- div endded -->
                          <div id="click6" class=" bg-slate-800 py-4 px-6 flex hover:cursor-pointer border-b border-slate-950 justify-between items-center">
                 <div class="flex items-center space-x-6 ">
