@@ -1,17 +1,17 @@
 <?php
 include "connection.php";
-if(isset($_POST["stFee"])){
+if(isset($_POST["stIdCard"])){
     $stName = $_POST["stName"];
+    $stFathername = $_POST["stFathername"];
     $stLastName = $_POST["stLastName"];
     $stIdCard = $_POST["stIdCard"];
     $stPhone = $_POST["stPhoneNum"];
-    $stFee = $_POST["stFee"];
-    $Result = $connect->query("SELECT st_name,st_lastName,tazkira_num FROM student where st_name = '$stName' and st_lastName= '$stLastName' and tazkira_num = '$stIdCard'");
+    $Result = $connect->query("SELECT st_name,st_fatherName,st_lastName,tazkira_num FROM student where st_name = '$stName' and st_lastName= '$stLastName' and tazkira_num = '$stIdCard'");
     if($Result->num_rows > 0){
         echo "<script>alert('Sorrey the student is alredy')</script>";
 }
 else{
-     $resultinsert =("INSERT INTO student(st_name,st_lastName,tazkira_num,phone_num,fec_paid) VALUES('$stName','$stLastName','$stIdCard','$stPhone','$stFee') ");
+     $resultinsert =("INSERT INTO student(st_name,st_fatherName,st_lastName,tazkira_num,phone_number) VALUES('$stName','$stFathername','$stLastName','$stIdCard','$stPhone') ");
      $result= $connect->query($resultinsert);
 }
 }
@@ -46,10 +46,10 @@ else{
                 <h1 class="text-4xl mb-5 font-medium">Add Students</h1>
                 <form action=<?php echo $_SERVER["PHP_SELF"]; ?> method="post" class="w-[80%] grid grid-cols-2 px-3 py-12 border rounded-md gap-6 ">
                     <input name="stName" type="text" placeholder="Plase Inter A Valid Student Name" class="p-3 border border-gray-500 rounded-md outline-0">
+                    <input name="stFathername" type="text" placeholder="Plase Inter A Valid student Fathe Name " class="p-3 border border-gray-500 rounded-md outline-0">
                     <input name="stLastName" type="text" placeholder="Plase Inter A Valid Student LastName " class="p-3 h-14 border border-gray-500 rounded-md outline-0">
                     <input name="stIdCard" type="text" placeholder="Plase Inter A Valid Student Tazkira Number" class="p-3 border border-gray-500 rounded-md outline-0">
                     <input name="stPhoneNum" type="text" placeholder="Plase Inter A Valid Student Phone Number" class="p-3 border border-gray-500 rounded-md outline-0">
-                    <input name="stFee" type="number" placeholder="Plase Inter A Valid student Fee" class="p-3 border border-gray-500 rounded-md outline-0">
                     <input type="submit" value="Save" class=" py-1 h-14 px-12 mx-auto w-fit rounded-md bg-amber-600">
                 </form>
             </div>

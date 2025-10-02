@@ -1,6 +1,6 @@
 <?php
 include "connection.php";
-$query ="SELECT s.st_id,s.st_name,s.st_lastName,s.tazkira_num,s.fec_paid,c.course_name from student as s inner join coursestudent on s.st_id = coursestudent.student_id inner join course as c on c.course_id = coursestudent.course_id";
+$query ="SELECT s.st_id,s.st_name,s.st_fatherName,s.st_lastName,s.tazkira_num,c.course_name from student as s inner join coursestudent on s.st_id = coursestudent.student_id inner join course as c on c.course_id = coursestudent.course_id";
 $result = $connect->query($query);
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ $result = $connect->query($query);
 <body>
     <div class="h-screen overflow-y-hidden w-full bg-stone-50 flex">
         <?php
-        include "SideBAr.php";
+        include "SideBar.php";
         ?>
         <!-- sideBar endded -->
         <div class="h-screen w-full ">
@@ -35,18 +35,18 @@ $result = $connect->query($query);
                 <tr>
                     <th class="border p-1">Student_Id</th>
                     <th class="border p-1">Student_Name</th>
+                    <th class="border p-1">Student_Father_n</th>
                     <th class="border p-1">Student_LastName</th>
                     <th class="border p-1">Student_IdCard</th>
-                    <th class="border p-1">Student_Fee</th>
                     <th class="border p-1">CourseName</th>
                 </tr>
                 <?php while($row = $result->fetch_assoc()){ ?>
                     <tr>
                         <td class="border p-1"><?php echo $row["st_id"] ?></td>
                         <td class="border p-1"><?php echo $row["st_name"] ?></td>
+                        <td class="border p-1"><?php echo $row["st_fatherName"] ?></td>
                         <td class="border p-1"><?php echo $row["st_lastName"] ?></td>
                         <td class="border p-1"><?php echo $row["tazkira_num"] ?></td>
-                        <td class="border p-1"><?php echo $row["fec_paid"] ?></td>
                         <td class="border p-1"><?php echo $row["course_name"] ?></td>
                     </tr>
 

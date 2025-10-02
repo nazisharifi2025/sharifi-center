@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="app.js" defer></script>
 </head>
+<!-- sk-tQXQ68dd53901347212624 -->
 <body>
       <div id="contener" class="w-[25%] bg-gray-900 h-full text-white ">
             <div class="px-5 py-4 bg-amber-600 flex justify-between items-center">
@@ -89,7 +90,7 @@
              <div id="div3" class=" transform-fill transition-all duration-700 ease-linear hidden flex-col text-gray-400 items-center my-2 w-full ">
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
-                    <span>All Teacher</span>
+                    <span> <a href=""></a> All Teacher</span>
                 </div>
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>

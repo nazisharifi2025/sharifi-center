@@ -5,7 +5,7 @@ $totalTeacher = $connect->query($gitTotalT);
 $gitTotalS = "SELECT count(st_id) AS student FROM student";
 $totalStudent = $connect->query($gitTotalS);
 $studentAll = $totalStudent->fetch_assoc();
-$commentFees = "SELECT sum(fec_paid) AS Fess FROM student";
+$commentFees = "SELECT sum(amount) AS Fess FROM payment";
 $result = $connect->query($commentFees);
 $totalFece = $result->fetch_assoc();
 ?>
