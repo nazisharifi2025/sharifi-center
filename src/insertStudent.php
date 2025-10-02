@@ -25,6 +25,7 @@ else{
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../public/output.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="insertstu.js" defer></script>
     <script src="app.js" defer></script>
 </head>
 <body>
@@ -44,12 +45,22 @@ else{
                 <h1 class=" text-base">Dashbord <i class="fas fa-chevron-right text-sm"></i>Students </h1>
                 <div class="w-full mx-auto flex flex-col gap-4 items-center justify-center ">
                 <h1 class="text-4xl mb-5 font-medium">Add Students</h1>
-                <form action=<?php echo $_SERVER["PHP_SELF"]; ?> method="post" class="w-[80%] grid grid-cols-2 px-3 py-12 border rounded-md gap-6 ">
+                <div class="h-[80%] w-full flex justify-center space-x-6 items-center">
+                    <button class="p-4 rounded-md bg-gray-400 text-white text-xl hover:bg-transparent hover:border hover:text-gray-500 transition-all duration-500" id="btnNew">Registation New Student</button>
+                    <button class="p-4 rounded-md bg-gray-400 text-white text-xl hover:bg-transparent hover:border hover:text-gray-500 transition-all duration-500" id="btnOld">Registation Old Student</button>
+                </div>
+                <form id="newForm" action=<?php echo $_SERVER["PHP_SELF"]; ?> method="post" class="w-[80%] hidden  grid-cols-2 px-3 py-12 border rounded-md gap-6 ">
                     <input name="stName" type="text" placeholder="Plase Inter A Valid Student Name" class="p-3 border border-gray-500 rounded-md outline-0">
                     <input name="stFathername" type="text" placeholder="Plase Inter A Valid student Fathe Name " class="p-3 border border-gray-500 rounded-md outline-0">
                     <input name="stLastName" type="text" placeholder="Plase Inter A Valid Student LastName " class="p-3 h-14 border border-gray-500 rounded-md outline-0">
                     <input name="stIdCard" type="text" placeholder="Plase Inter A Valid Student Tazkira Number" class="p-3 border border-gray-500 rounded-md outline-0">
                     <input name="stPhoneNum" type="text" placeholder="Plase Inter A Valid Student Phone Number" class="p-3 border border-gray-500 rounded-md outline-0">
+                    <input type="submit" value="Save" class=" py-1 h-14 px-12 mx-auto w-fit rounded-md bg-amber-600">
+                </form>
+                <form id="OldForm" action=<?php echo $_SERVER["PHP_SELF"]; ?> method="post" class="w-[80%] hidden  grid-cols-2 px-3 py-12 border rounded-md gap-6 ">
+                    <input name="Name" type="text" placeholder="Plase Inter A Valid Student Name" class="p-3 border border-gray-500 rounded-md outline-0">
+                    <input name="Fathername" type="text" placeholder="Plase Inter A Valid student Fathe Name " class="p-3 border border-gray-500 rounded-md outline-0">
+                    <input name="LastName" type="text" placeholder="Plase Inter A Valid Student LastName " class="p-3 h-14 border border-gray-500 rounded-md outline-0">
                     <input type="submit" value="Save" class=" py-1 h-14 px-12 mx-auto w-fit rounded-md bg-amber-600">
                 </form>
             </div>
