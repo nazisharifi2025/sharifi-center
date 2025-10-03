@@ -15,6 +15,20 @@ else{
      $result= $connect->query($resultinsert);
 }
 }
+// شاگردان از فبل موجوده
+if(isset($_POST["Name"])){
+    $Name = $_POST["Name"];
+    $Fathername = $_POST["Fathername"];
+    $LastName = $_POST["LastName"];
+    $Result = $connect->query("SELECT st_name,st_fatherName,st_lastName FROM student where st_name = '$Name' and st_lastName= '$LastName'");
+    if($Result->num_rows > 0){
+        echo "<script>alert('Sorrey the student is alredy')</script>";
+}
+else{
+     $resultinsert =("INSERT INTO student(st_name,st_fatherName,st_lastName) VALUES('$Name','$Fathername','$LastName') ");
+     $result= $connect->query($resultinsert);
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
