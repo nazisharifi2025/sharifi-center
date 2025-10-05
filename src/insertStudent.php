@@ -16,18 +16,19 @@ else{
 }
 }
 // شاگردان از فبل موجوده
-if(isset($_POST["Name"])){
-    $Name = $_POST["Name"];
-    $Fathername = $_POST["Fathername"];
-    $LastName = $_POST["LastName"];
-    $Result = $connect->query("SELECT st_name,st_fatherName,st_lastName FROM student where st_name = '$Name' and st_lastName= '$LastName'");
-    if($Result->num_rows > 0){
-        echo "<script>alert('Sorrey the student is alredy')</script>";
-}
-else{
-     $resultinsert =("INSERT INTO student(st_name,st_fatherName,st_lastName) VALUES('$Name','$Fathername','$LastName') ");
-     $result= $connect->query($resultinsert);
-}
+if(isset($_POST["amount"])){
+    $amount = $_POST["amount"];
+    $commentAmount =$connect->query("SELECT amount FROM payment");
+    if($commentAmount->num_rows > 0){
+     echo "<script>alert('Sorrey the student is alredy')</script>";
+    }
+    else{
+        $comentInsert= $connect->query("INSERT INTO payment(amount) VALUES ('$amount')"); 
+    }
+    $commintName = "SELECT st_name FROM student";
+    $result = $connect->query($commintName);
+    $commintCourse = "SELECT course_name FROM course";
+    $resultCourse = $connect->query($commintCourse);
 }
 ?>
 <!DOCTYPE html>
@@ -72,9 +73,21 @@ else{
                     <input type="submit" value="Save" class=" py-1 h-14 px-12 mx-auto w-fit rounded-md bg-amber-600">
                 </form>
                 <form id="OldForm" action=<?php echo $_SERVER["PHP_SELF"]; ?> method="post" class="w-[80%] hidden  grid-cols-2 px-3 py-12 border rounded-md gap-6 ">
-                    <input name="Name" type="text" placeholder="Plase Inter A Valid Student Name" class="p-3 border border-gray-500 rounded-md outline-0">
-                    <input name="Fathername" type="text" placeholder="Plase Inter A Valid student Fathe Name " class="p-3 border border-gray-500 rounded-md outline-0">
-                    <input name="LastName" type="text" placeholder="Plase Inter A Valid Student LastName " class="p-3 h-14 border border-gray-500 rounded-md outline-0">
+                <select name="Name" id="" class="p-3 border border-gray-500 rounded-md outline-0">
+                    <?php while($row =$result->fetch_assoc()){    ?>
+                        <option value=<?php echo $row["st_name"];   ?>>
+                            <?php  echo $row["st_name"];  ?>
+                        </option>
+                        <?php } ?>
+                </select>
+                <select name="Name" id="" class="p-3 border border-gray-500 rounded-md outline-0">
+                    <?php while($row =$resultCourse->fetch_assoc()){    ?>
+                        <option value=<?php echo $row["course_name"];   ?>>
+                            <?php  echo $row["course_name"];  ?>
+                        </option>
+                        <?php } ?>
+                </select>
+                    <input name="amount" type="text" placeholder="Plase Inter A Valid Student Amount" class="p-3 border border-gray-500 rounded-md outline-0">
                     <input type="submit" value="Save" class=" py-1 h-14 px-12 mx-auto w-fit rounded-md bg-amber-600">
                 </form>
             </div>
