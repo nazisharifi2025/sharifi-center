@@ -148,7 +148,7 @@
                 </div>
                 <div class="flex items-center py-3 px-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
-                    <span>Add Expenses</span>
+                    <span><a href="insertpayment.php">Add Fee</a></span>
                 </div>
              </div>
              <!-- div 4 ended -->
