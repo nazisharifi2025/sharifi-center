@@ -11,7 +11,7 @@
 </head>
 <!-- sk-tQXQ68dd53901347212624 -->
 <body>
-      <div id="contener" class="w-[25%] bg-gray-900 h-full text-white ">
+      <div id="contener" class="w-[25%] bg-gray-900 h-full text-white">
             <div class="px-5 py-4 bg-amber-600 flex justify-between items-center">
                 <img src="../images/logo.png"  alt="">
                 <button id="bars" class="block">
@@ -69,7 +69,7 @@
                 </div>
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
-                    <span><a href="insertStudent.php">Student Form</a></span>
+                    <span><a href="buttonSt.php">Student Form</a></span>
                 </div>
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
@@ -90,7 +90,7 @@
              <div id="div3" class=" transform-fill transition-all duration-700 ease-linear hidden flex-col text-gray-400 items-center my-2 w-full ">
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
-                    <span> <a href=""></a> All Teacher</span>
+                    <span> <a href="AllTeacher.php"> All Teacher</a></span>
                 </div>
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
-                    <span><a href="insertInstractor.php">Add Teacher</a></span>
+                    <span><a href="AllinsertInstractor.php">Add Teacher</a></span>
                 </div>
                 <div class="flex items-center py-3 pl-24 hover:bg-slate-800  space-x-2  w-full">
                     <i class="fas fa-chevron-right text-sm"></i>
